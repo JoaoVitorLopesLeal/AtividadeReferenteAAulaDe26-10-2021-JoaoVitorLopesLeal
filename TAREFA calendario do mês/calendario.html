@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="estilo.css">
+        <title>Calendario</title>
+    </head>
+    <body>
+        <script>
+            var ii, umaData, diaSem, ano, mes, d, corfnt, corfdo;
+            
+            ano = parseInt(window.prompt("Qual ano?"));
+            mes = parseInt(window.prompt("Qual mes?"));
+
+            umaData = new Date();
+            umaData.setDate(1);
+            umaData.setMonth(mes-1);
+            umaData.setFullYear(ano);
+
+            diaSem = umaData.getDay(1);
+            
+            document.write("<h1>" + umaData + "</h1>");
+            document.write("<br>");
+
+            document.write("<table border=3>");
+            document.write("<tr><td>Dom</td><td>Seg</td><td>Ter</td><td>Qua</td><td>Qui</td><td>Sex</td><td>Sáb</td></tr>")
+            
+            document.write("<tr>");
+            
+
+            ii =0;
+            if (diaSem != 0)
+            {
+                for(ii; ii < diaSem; ii++)
+                {
+                    document.write("<td><pre> </pre></td>");
+                }
+                
+            }
+            
+            for(d=2;d <= 31;)
+            {                
+        
+                for(ii; ii <7 && d <=31;ii++)
+                {
+                    document.write("<td width='50px' height='20px' align ='center'>"+umaData.getDate()+"</td>");
+                    umaData.setDate(d);
+                    d++;
+                    diaSem = umaData.getDay(d);
+
+                }
+                document.write("</tr>");
+                document.write("<tr>");
+                diaSem = umaData.getDay(d);
+                ii = 0;
+
+            }
+
+            document.write("</table>");        
+        
+        </script>
+    </body>
+</html>
